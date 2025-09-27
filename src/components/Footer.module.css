@@ -1,0 +1,158 @@
+.footer {
+  background-color: #4a4a4a;
+  color: #cccccc;
+  padding: 40px 0 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.columnTitle {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 0;
+  letter-spacing: 0.5px;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkList li {
+  margin-bottom: 8px;
+}
+
+.link {
+  color: #cccccc;
+  text-decoration: none;
+  line-height: 1.4;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.twitterLink {
+  color: #1da1f2;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
+}
+
+.twitterLink:hover {
+  color: #0d8bd9;
+}
+
+.twitterIcon {
+  font-size: 16px;
+}
+
+.infoContent {
+  margin-top: 20px;
+}
+
+.infoText {
+  line-height: 1.5;
+  margin-bottom: 30px;
+  color: #cccccc;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  text-align: center;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.logoMain {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.logoMain::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -15px;
+  right: -15px;
+  height: 3px;
+  background: radial-gradient(circle, #ffffff 1px, transparent 1px);
+  background-size: 4px 4px;
+  background-repeat: repeat-x;
+}
+
+.logoSub {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+}
+
+.logoTagline {
+  font-size: 10px;
+  color: #cccccc;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 12px;
+  color: #999999;
+  line-height: 1.4;
+}
+
+.copyright p {
+  margin: 2px 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .column {
+    min-width: auto;
+  }
+  
+  .footer {
+    padding: 30px 0 15px;
+  }
+}

@@ -1,0 +1,144 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c2c2c;
+  padding: 8px 20px;
+  font-family: Arial, sans-serif;
+  min-height: 40px;
+}
+
+.leftSection {
+  flex: 1;
+}
+
+.tagline {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.socialLink {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.socialLink svg {
+  width: 18px;
+  height: 18px;
+}
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.callButton,
+.whatsappButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.callButton {
+  background-color: #007bff;
+  color: white;
+}
+
+.callButton:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.whatsappButton {
+  background-color: #25d366;
+  color: white;
+}
+
+.whatsappButton:hover {
+  background-color: #128c7e;
+  transform: translateY(-1px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 12px 20px;
+    gap: 15px;
+  }
+  
+  .leftSection {
+    flex: none;
+  }
+  
+  .rightSection {
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .socialIcons {
+    gap: 12px;
+  }
+  
+  .actionButtons {
+    gap: 10px;
+  }
+  
+  .callButton,
+  .whatsappButton {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rightSection {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  
+  .callButton,
+  .whatsappButton {
+    width: 100%;
+    max-width: 200px;
+  }
+}
