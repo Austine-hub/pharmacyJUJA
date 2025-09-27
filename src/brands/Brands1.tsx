@@ -16,20 +16,25 @@ type Brand = {
   url?: string; // optional: can add links inside brands.json
 };
 
-function groupBrands(brands: Brand[]) {
+
+
+  function groupBrands(brands: Brand[]) {
   const groups: Record<string, Brand[]> = {};
   for (const brand of brands) {
+    if (!brand?.name) continue; // ⬅️ skip if brand or name is missing
     const first = brand.name.trim().charAt(0).toUpperCase();
     const key = /[A-Z]/.test(first) ? first : "0-9";
     if (!groups[key]) groups[key] = [];
     groups[key].push(brand);
   }
-  // sort groups & keys
+
+   // sort groups & keys
   const orderedKeys = ["0-9", ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i))];
   return orderedKeys
     .filter(k => groups[k])
     .map<[string, Brand[]]>(k => [k, groups[k].sort((a, b) => a.name.localeCompare(b.name))]);
 }
+
 
 const alphabet = ["0-9", ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i))];
 

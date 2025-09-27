@@ -4,8 +4,9 @@ import Topbar from './components/Topbar'
 import Products1 from './pages/Products1'
 import Footer from './components/Footer'
 import TopProducts from './pages/TopProducts'
-import Brands from './pages/Brands'
-import Brands1 from './brands/Brands1'
+import HealthConditionCarousel from './pages/HealthConditions'
+import Products2 from './pages/Products2'
+import Products3 from './pages/Products3'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,10 +16,11 @@ function App() {
       
       <Topbar/>
       <Navbar/>
+      <HealthConditionCarousel/>
       <TopProducts/>
-      <Brands1/>
+      <Products2/>
       <Products1/>
-      <Brands/>
+      <Products3/>
       <Footer/>
     </>
   )
