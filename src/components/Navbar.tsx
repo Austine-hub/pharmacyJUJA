@@ -1,41 +1,40 @@
-import React from 'react';
-import styles from './Navbar.module.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import styles from "./Navbar.module.css";
+
+interface NavItem {
+  to: string;
+  label: string;
+}
+
+const navItems: NavItem[] = [
+  { to: "/", label: "HOME" },
+  { to: "/products", label: "PRODUCTS" },
+  { to: "/blog", label: "BLOG" },
+  { to: "/about", label: "ABOUT US" },
+  { to: "/contact", label: "CONTACT US" },
+  { to: "/cart", label: "CART" },
+];
 
 const Navbar: React.FC = () => {
   return (
-    <nav className={styles.navbar}>
+    <nav className={styles.navbar} role="navigation">
       <div className={styles.container}>
         <ul className={styles.navList}>
-          <li className={styles.navItem}>
-            <a href="/" className={`${styles.navLink} ${styles.active}`}>
-              HOME
-            </a>
-          </li>
-          <li className={styles.navItem}>
-            <a href="/products" className={styles.navLink}>
-              PRODUCTS
-            </a>
-          </li>
-          <li className={styles.navItem}>
-            <a href="/blog" className={styles.navLink}>
-              BLOG
-            </a>
-          </li>
-          <li className={styles.navItem}>
-            <a href="/about" className={styles.navLink}>
-              ABOUT US
-            </a>
-          </li>
-          <li className={styles.navItem}>
-            <a href="/contact" className={styles.navLink}>
-              CONTACT US
-            </a>
-          </li>
-          <li className={styles.navItem}>
-            <a href="/cart" className={styles.navLink}>
-              CART
-            </a>
-          </li>
+          {navItems.map(({ to, label }) => (
+            <li key={to} className={styles.navItem}>
+              <NavLink
+                to={to}
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.active : ""}`
+                }
+                // ✅ No need to manually manage aria-current (React Router does it)
+                end
+              >
+                {label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </div>
     </nav>

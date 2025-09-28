@@ -62,20 +62,14 @@ const Products2: React.FC = () => {
     }
   ];
 
-  const itemsPerView = {
-    mobile: 1,
-    tablet: 2,
-    desktop: 4
-  };
-
   const nextSlide = () => {
-    setCurrentIndex((prev) => 
+    setCurrentIndex((prev) =>
       prev + 1 >= products.length ? 0 : prev + 1
     );
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => 
+    setCurrentIndex((prev) =>
       prev - 1 < 0 ? products.length - 1 : prev - 1
     );
   };
@@ -87,9 +81,9 @@ const Products2: React.FC = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>New on MYDAWA</h2>
-      
+
       <div className={styles.carousel}>
-        <button 
+        <button
           className={`${styles.navButton} ${styles.prevButton}`}
           onClick={prevSlide}
           aria-label="Previous products"
@@ -100,7 +94,7 @@ const Products2: React.FC = () => {
         </button>
 
         <div className={styles.productsWrapper}>
-          <div 
+          <div
             className={styles.productsContainer}
             style={{
               transform: `translateX(-${currentIndex * (100 / products.length)}%)`
@@ -112,17 +106,17 @@ const Products2: React.FC = () => {
                   <div className={styles.discountBadge}>
                     save<br />{product.discount}%
                   </div>
-                  <img 
-                    src={product.image} 
+                  <img
+                    src={product.image}
                     alt={product.name}
                     className={styles.productImage}
                   />
                 </div>
-                
+
                 <div className={styles.productInfo}>
                   <p className={styles.newLabel}>New on MYDAWA</p>
                   <h3 className={styles.productName}>{product.name}</h3>
-                  
+
                   <div className={styles.priceContainer}>
                     <span className={styles.currentPrice}>
                       {formatPrice(product.currentPrice, product.currency)}
@@ -142,7 +136,7 @@ const Products2: React.FC = () => {
           </div>
         </div>
 
-        <button 
+        <button
           className={`${styles.navButton} ${styles.nextButton}`}
           onClick={nextSlide}
           aria-label="Next products"

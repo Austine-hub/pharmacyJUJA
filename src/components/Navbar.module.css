@@ -1,18 +1,21 @@
+/* === Navbar Container === */
 .navbar {
-  background-color: #ffffff;
+  background-color: #fff;
   border-bottom: 1px solid #e5e5e5;
-  padding: 0;
-  margin: 0;
-  width: 100%;
   position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* keeps navbar above hero/content */
 }
 
+/* === Layout Wrapper === */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1.25rem; /* 20px → rem for scalability */
 }
 
+/* === Navigation List === */
 .navList {
   display: flex;
   align-items: center;
@@ -20,62 +23,68 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  height: 60px;
+  height: 3.75rem; /* 60px */
 }
 
+/* === Individual Items === */
 .navItem {
   margin: 0;
   padding: 0;
 }
 
+/* === Nav Links === */
 .navLink {
   display: block;
-  color: #666666;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  letter-spacing: 0.5px;
-  padding: 20px 24px;
-  transition: color 0.2s ease;
   position: relative;
+  color: #444; /* slightly darker for contrast */
+  text-decoration: none;
+  font-size: clamp(0.85rem, 1vw, 0.95rem); /* responsive font */
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: 0.5px;
+  padding: 1.25rem 1.5rem; /* 20px 24px */
+  transition: color 0.25s ease, transform 0.2s ease;
 }
 
 .navLink:hover {
-  color: #333333;
+  color: #222;
+  transform: translateY(-1px); /* subtle lift */
 }
 
-.navLink.active {
+/* === Active Link === */
+.active {
   color: #007bff;
   font-weight: 600;
 }
 
-.navLink.active::after {
-  content: '';
+.active::after {
+  content: "";
   position: absolute;
-  bottom: 0;
-  left: 24px;
-  right: 24px;
+  bottom: 0.5rem; /* spacing from text */
+  left: 20%;
+  right: 20%;
   height: 2px;
-  background-color: #007bff;
+  background-color: currentColor; /* uses text color */
+  border-radius: 2px;
+  transition: width 0.3s ease;
 }
 
-/* Responsive design */
+/* === Responsive Design === */
 @media (max-width: 768px) {
   .navList {
     flex-wrap: wrap;
     height: auto;
-    padding: 10px 0;
+    padding: 0.5rem 0;
   }
-  
+
   .navLink {
-    padding: 12px 16px;
-    font-size: 13px;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
   }
-  
-  .navLink.active::after {
-    left: 16px;
-    right: 16px;
+
+  .active::after {
+    left: 15%;
+    right: 15%;
   }
 }
 
@@ -84,19 +93,19 @@
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .navItem {
     width: 100%;
   }
-  
+
   .navLink {
     text-align: center;
-    padding: 15px 20px;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 1rem;
+    border-bottom: 1px solid #f2f2f2;
   }
-  
-  .navLink.active::after {
-    left: 20px;
-    right: 20px;
+
+  .active::after {
+    left: 25%;
+    right: 25%;
   }
 }

@@ -1,5 +1,5 @@
-// src/data/brands.ts
-export const DEFAULT_BRANDS: string[] = [
+// src/data/brands2.ts
+export const BRANDS: string[] = [
   "4Eyes", "701", "A'pieu", "Abreva", "ACET", "Actavis", "Actimove", "Adasept",
   "Advil", "Aerius", "AESTURA", "Alcon", "Aleve", "Align", "Alka-Seltzer", "Allegra",
   "Allenburys", "Allergan", "Allernix", "Always", "Amosan", "Anbesol", "Anua", "Anurex",
@@ -26,15 +26,4 @@ export const DEFAULT_BRANDS: string[] = [
   "Gold Bond", "Gravol", "GUM",
   "Hawaiian Tropic", "health One", "HealthCare Plus", "Heimish", "Helixia", "Hemovel",
   "Hoe Hin",
-
-  // ✅ Extra names merged from your second JSON that were missing:
-  "Abreva", "Aerius", "Aleve", "Allenburys", "Always", "Amosan", "Anbesol", "Anurex",
-  "Aspercreme", "Aspirin", "Atlas", "Aveeno", "Band-Aid", "Beano", "Benadryl",
-  "Betadine", "Biotene", "Blistex", "Buckley's", "Caltrate", "Canesten", "Centrum",
-  "Cepacol", "ChapStick", "Chloraseptic", "Citracal", "Claritin", "Clear Eyes",
-  "Colace", "Colgate", "Compound W", "Crest", "Curel", "Deep Relief", "DenTek",
-  "Dettol", "Dex4", "Dove", "Dr. Bronner's", "Dr. Scholl's", "Drixoral", "Dulcolax",
-  "Durex", "Efferdent", "Elastoplast", "ENO", "Etude House", "Eucerin", "ex-lax",
-  "Fleet", "Flonase", "Foodaholic", "Formedica", "Futuro", "Gas-X", "Gaviscon",
-  "Gillette", "Glaxal Base", "Glysomed", "Gold Bond", "Gravol", "GUM",
 ];

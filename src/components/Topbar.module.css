@@ -6,7 +6,17 @@
   padding: 8px 20px;
   font-family: Arial, sans-serif;
   min-height: 40px;
+
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  transition: transform 0.3s ease-in-out;
 }
+
+.hidden {
+  transform: translateY(-100%);
+}
+
 
 .leftSection {
   flex: 1;

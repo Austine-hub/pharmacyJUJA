@@ -1,0 +1,167 @@
+/* =========================
+   Hero Section
+   ========================= */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+}
+
+/* =========================
+   Seamless Fade Slides
+   ========================= */
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.05); /* start slightly zoomed in */
+  transition: opacity 1.5s ease-in-out, transform 8s ease-out;
+  z-index: 0;
+}
+
+.active {
+  opacity: 1;
+  transform: scale(1); /* smooth zoom-out effect */
+  z-index: 1;
+}
+
+/* =========================
+   Overlay Text
+   ========================= */
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  max-width: 750px;
+  padding: 2rem;
+  background: linear-gradient(
+    rgba(0, 50, 100, 0.55),
+    rgba(0, 100, 80, 0.55)
+  );
+  border-radius: 1rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  z-index: 3;
+}
+
+.overlay h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.overlay p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #e6f2f2;
+}
+
+/* =========================
+   CTA Buttons
+   ========================= */
+.ctaGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  padding: 0.9rem 1.6rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primaryBtn {
+  background: #0077cc;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 119, 204, 0.3);
+}
+.primaryBtn:hover {
+  background: #005fa3;
+  transform: translateY(-2px);
+}
+
+.secondaryBtn {
+  background: #00b894;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+}
+.secondaryBtn:hover {
+  background: #009e7c;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Carousel Arrows
+   ========================= */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  padding: 0.6rem 1.1rem;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.left {
+  left: 20px;
+}
+.right {
+  right: 20px;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 768px) {
+  .overlay {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .overlay h1 {
+    font-size: 2rem;
+  }
+
+  .overlay p {
+    font-size: 1rem;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+    padding: 0.8rem;
+  }
+
+  .arrow {
+    font-size: 1.6rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+
+
