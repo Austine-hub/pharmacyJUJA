@@ -4,71 +4,21 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  color: #1f2937; /* clinical gray */
 }
 
 /* Header */
 .header {
-  display: flex;
-  justify-content: center; /* center title */
-  align-items: center;
+  text-align: center;
   margin-bottom: 24px;
-  position: relative; /* so nav buttons can be absolutely placed */
 }
 
 .title {
   font-size: 24px;
   font-weight: 600;
-  color: #333;
+  color: #0f172a; /* deep neutral tone */
   margin: 0;
-  text-align: center;
-}
-
-/* Navigation (positioned over title) */
-.navigation {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  gap: 8px;
-}
-
-.navButton {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid #e0e0e0;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  color: #666;
-}
-
-.navButton:hover:not(:disabled) {
-  background: #f5f5f5;
-  border-color: #ccc;
-}
-
-.navButton:active:not(:disabled) {
-  transform: scale(0.95);
-}
-
-.navButton:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.prevButton svg {
-  margin-right: 1px;
-}
-
-.nextButton svg {
-  margin-left: 1px;
 }
 
 /* Carousel Container */
@@ -77,15 +27,55 @@
   overflow: hidden;
 }
 
+/* Navigation Arrows (far left & right) */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #2563eb; /* medical blue */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.leftArrow {
+  left: -12px;
+}
+
+.rightArrow {
+  right: -12px;
+}
+
+.navButton:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #93c5fd;
+}
+
+.navButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Carousel */
 .carousel {
   display: flex;
   gap: 16px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding-bottom: 8px;
+  padding: 8px 4px 16px;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  cursor: grab; /* hint drag/swipe */
+  cursor: grab;
 }
 
 .carousel:active {
@@ -93,19 +83,17 @@
 }
 
 .carousel::-webkit-scrollbar {
-  display: none; /* hide scrollbar */
+  display: none;
 }
 
 /* Card */
 .card {
   flex: 0 0 auto;
-  width: clamp(200px, 25vw, 260px); /* fluid responsive width */
+  width: clamp(200px, 25vw, 260px);
   border-radius: 12px;
-  overflow: hidden;
-  background: white;
+  background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  cursor: pointer;
 }
 
 .card:hover {
@@ -117,8 +105,7 @@
   width: 100%;
   height: 180px;
   overflow: hidden;
-  background: #f8f8f8;
-  position: relative;
+  background: #f8fafc;
 }
 
 .cardImage {
@@ -132,22 +119,21 @@
   transform: scale(1.05);
 }
 
-/* Footer with dynamic background */
+/* Footer */
 .cardFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
+  padding: 14px 18px;
   min-height: 60px;
-  background-color: var(--bgColor, #eee);
+  background-color: var(--bgColor, #2563eb);
 }
 
 .cardTitle {
-  color: white;
+  color: #ffffff;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.4;
-  flex: 1;
   margin-right: 12px;
 }
 
@@ -157,48 +143,30 @@
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   transition: all 0.2s ease;
-  color: white;
-  flex-shrink: 0;
 }
 
 .cardButton:hover {
   background: rgba(255, 255, 255, 0.35);
-  border-color: rgba(255, 255, 255, 0.6);
   transform: scale(1.1);
 }
 
-.cardButton svg {
-  width: 14px;
-  height: 14px;
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
-  .container {
-    padding: 0 16px;
-  }
-
-  .header {
-    margin-bottom: 20px;
-  }
-
   .title {
     font-size: 20px;
   }
 
-  .navigation {
-    gap: 6px;
-    right: 8px; /* tighter on small screens */
+  .leftArrow {
+    left: -8px;
   }
 
-  .navButton {
-    width: 36px;
-    height: 36px;
+  .rightArrow {
+    right: -8px;
   }
 
   .card {
@@ -208,36 +176,9 @@
   .imageContainer {
     height: 150px;
   }
-
-  .cardFooter {
-    padding: 12px 16px;
-    min-height: 50px;
-  }
-
-  .cardTitle {
-    font-size: 13px;
-  }
-
-  .cardButton {
-    width: 28px;
-    height: 28px;
-  }
-
-  .cardButton svg {
-    width: 12px;
-    height: 12px;
-  }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 0 12px;
-  }
-
-  .carousel {
-    gap: 12px;
-  }
-
   .title {
     font-size: 18px;
   }

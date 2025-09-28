@@ -11,12 +11,6 @@ const Footer: React.FC = () => {
             <li><a href="#" className={styles.link}>Home</a></li>
             <li><a href="#" className={styles.link}>About Us</a></li>
             <li><a href="#" className={styles.link}>Ask The Doctor</a></li>
-            <li><a href="#" className={styles.link}>Contact Us</a></li>
-            <li><a href="#" className={styles.link}>FAQs</a></li>
-            <li><a href="#" className={styles.link}>Meds For Pets</a></li>
-            <li><a href="#" className={styles.link}>Shipping Information</a></li>
-            <li><a href="#" className={styles.link}>Newsletters</a></li>
-            <li><a href="#" className={styles.link}>Special Feature Articles</a></li>
           </ul>
         </div>
 
@@ -28,9 +22,6 @@ const Footer: React.FC = () => {
             <li><a href="#" className={styles.link}>Privacy Policy</a></li>
             <li><a href="#" className={styles.link}>Sitemap</a></li>
             <li><a href="#" className={styles.link}>Trusted Medical Information</a></li>
-            <li><a href="#" className={styles.link}>Canadian Pharmacy Infographics</a></li>
-            <li><a href="#" className={styles.link}>Digital Booklet</a></li>
-            <li><a href="#" className={styles.link}>Digital Magazine</a></li>
             <li>
               <a href="#" className={styles.twitterLink}>
                 <span className={styles.twitterIcon}>🐦</span> Twitter
@@ -43,13 +34,13 @@ const Footer: React.FC = () => {
           <h3 className={styles.columnTitle}>INFORMATION</h3>
           <div className={styles.infoContent}>
             <p className={styles.infoText}>
-              NorthWestPharmacy.com offers prescription drugs and over the counter medications but does not offer controlled prescription drugs. We are certified by the Canadian International Pharmacy Association.
+              AJANJAPharmacy.com offers prescription drugs and over the counter medications but does not offer controlled prescription drugs. We are certified by the Canadian International Pharmacy Association.
             </p>
             
             <div className={styles.logoContainer}>
               <div className={styles.logo}>
                 <div className={styles.logoText}>
-                  <span className={styles.logoMain}>NORTHWEST</span>
+                  <span className={styles.logoMain}>AJANJA</span>
                   <span className={styles.logoSub}>PHARMACY</span>
                 </div>
                 <div className={styles.logoTagline}>CIPA • SAFE • SERVICE</div>
@@ -58,7 +49,7 @@ const Footer: React.FC = () => {
 
             <div className={styles.copyright}>
               <p>Copyright © 2025 - All Rights Reserved.</p>
-              <p>NorthWestPharmacy.com Inc.</p>
+              <p>AJANJAPharmacy.com Inc.</p>
             </div>
           </div>
         </div>

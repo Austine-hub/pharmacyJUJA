@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % length);
-    }, 5000);
+    }, 75000);
     return () => clearInterval(interval);
   }, [length]);
 
