@@ -10,9 +10,11 @@ import Hero from "./components/Hero";
 // Pages
 import TopProducts from "./pages/TopProducts";
 import HealthConditionCarousel from "./pages/HealthConditions";
-import Products1 from "./pages/Products1";
+import AboutUs from "./pages/AboutUs";
 import Products2 from "./pages/Products2";
 import Products3 from "./pages/Products3";
+import MainProducts from "./products/OurProducts";
+
 
 const App: React.FC = () => {
   return (
@@ -33,7 +35,8 @@ const App: React.FC = () => {
             </>
           }
         />
-        <Route path="/products1" element={<Products1 />} />
+        <Route path="/products" element={<MainProducts />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="/products2" element={<Products2 />} />
         <Route path="/products3" element={<Products3 />} />
         {/* fallback for undefined routes */}
