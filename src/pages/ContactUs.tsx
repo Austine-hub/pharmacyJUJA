@@ -1,7 +1,6 @@
-import { useState } from "react";
-import type { FormEvent } from "react";
+import { useState, useCallback } from "react";
+import type { FormEvent, ChangeEvent } from "react";
 import styles from "./ContactUs.module.css";
-
 
 interface FormData {
   name: string;
@@ -9,29 +8,68 @@ interface FormData {
   message: string;
 }
 
+const INITIAL_FORM_STATE: FormData = {
+  name: "",
+  email: "",
+  message: "",
+};
+
+const CONTACT_INFO = {
+  email: "info@yourhospital.com",
+  phones: ["+254 123456789", "+254 987654321"],
+  whatsappNumber: "254123456789", // Replace with actual WhatsApp number
+  hours: "9:30 AM – 12:00 PM",
+} as const;
+
 export default function ContactUs() {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<FormData>(INITIAL_FORM_STATE);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // TODO: integrate API or email service
-    setFormData({ name: "", email: "", message: "" }); // reset form
-  };
+  const handleSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setIsSubmitting(true);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+      try {
+        // TODO: integrate API or email service
+        console.log("Form submitted:", formData);
+        
+        // Simulate API call
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        
+        setFormData(INITIAL_FORM_STATE);
+        // TODO: Show success message to user
+      } catch (error) {
+        console.error("Form submission error:", error);
+        // TODO: Show error message to user
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [formData]
+  );
+
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    },
+    []
+  );
+
+  const handleWhatsAppClick = useCallback(() => {
+    const message = encodeURIComponent(
+      "Hello, I would like to inquire about hospital services."
+    );
+    window.open(
+      `https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${message}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }, []);
 
   return (
     <section className={styles.container} aria-labelledby="contact-heading">
@@ -41,15 +79,16 @@ export default function ContactUs() {
 
       <p className={styles.description}>
         For medical inquiries or appointment requests, you can reach our team
-        during{" "}
-        <span className={styles.highlight}>9:30 AM – 12:00 PM</span> daily via
-        live chat. Outside these hours, please leave us a message and we will
-        respond promptly.
+        during <span className={styles.highlight}>{CONTACT_INFO.hours}</span>{" "}
+        daily via live chat. Outside these hours, please leave us a message and
+        we will respond promptly.
       </p>
 
       <div className={styles.buttonContainer}>
         <button
+          type="button"
           className={styles.chatButton}
+          onClick={handleWhatsAppClick}
           aria-label="Start WhatsApp chat with hospital support"
         >
           💬 Chat with us on WhatsApp
@@ -64,26 +103,30 @@ export default function ContactUs() {
         <p>
           📧 Email:{" "}
           <a
-            href="mailto:info@yourhospital.com"
+            href={`mailto:${CONTACT_INFO.email}`}
             className={styles.link}
             aria-label="Send email to hospital"
           >
-            info@yourhospital.com
+            {CONTACT_INFO.email}
           </a>
         </p>
         <p>
           📞 Tel:{" "}
           <a
-            href="tel:+254123456789"
+            href={`tel:${CONTACT_INFO.phones[0].replace(/\s/g, "")}`}
             className={styles.link}
             aria-label="Call hospital support"
           >
-            +254 123456789, +254 987654321
+            {CONTACT_INFO.phones.join(", ")}
           </a>
         </p>
       </div>
 
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit}
+        aria-label="Contact form"
+      >
         <div className={styles.formRow}>
           <input
             type="text"
@@ -94,6 +137,8 @@ export default function ContactUs() {
             onChange={handleChange}
             required
             aria-label="Your name"
+            autoComplete="name"
+            disabled={isSubmitting}
           />
           <input
             type="email"
@@ -104,6 +149,8 @@ export default function ContactUs() {
             onChange={handleChange}
             required
             aria-label="Your email"
+            autoComplete="email"
+            disabled={isSubmitting}
           />
         </div>
 
@@ -116,10 +163,16 @@ export default function ContactUs() {
           onChange={handleChange}
           required
           aria-label="Your message"
+          disabled={isSubmitting}
         />
 
-        <button type="submit" className={styles.submitButton}>
-          📨 Send Message
+        <button
+          type="submit"
+          className={styles.submitButton}
+          disabled={isSubmitting}
+          aria-busy={isSubmitting}
+        >
+          {isSubmitting ? "📤 Sending..." : "📨 Send Message"}
         </button>
       </form>
     </section>

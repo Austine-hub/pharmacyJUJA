@@ -11,9 +11,10 @@ import Hero from "./components/Hero";
 import TopProducts from "./pages/TopProducts";
 import HealthConditionCarousel from "./pages/HealthConditions";
 import AboutUs from "./pages/AboutUs";
-import Products2 from "./pages/Products2";
-import Products3 from "./pages/Products3";
 import MainProducts from "./products/OurProducts";
+import ContactUs from "./pages/ContactUs";
+import OurServices from "./products/OurServices";
+import TeamOfExperts from "./pages/TeamOfExperts";
 
 
 const App: React.FC = () => {
@@ -37,8 +38,9 @@ const App: React.FC = () => {
         />
         <Route path="/products" element={<MainProducts />} />
         <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/products2" element={<Products2 />} />
-        <Route path="/products3" element={<Products3 />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/services" element={<OurServices />} />
+        <Route path="/team" element={<TeamOfExperts />} />
         {/* fallback for undefined routes */}
         <Route path="*" element={<h2>404 - Page Not Found</h2>} />
       </Routes>

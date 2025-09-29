@@ -10,10 +10,10 @@ interface NavItem {
 const navItems: NavItem[] = [
   { to: "/", label: "HOME" },
   { to: "/products", label: "PRODUCTS" },
-  { to: "/blog", label: "BLOG" },
+  { to: "/services", label: "OUR SERVICES" },
   { to: "/about-us", label: "ABOUT US" },
-  { to: "/contact", label: "CONTACT US" },
-  { to: "/cart", label: "CART" },
+  { to: "/contact-us", label: "CONTACT US" },
+  { to: "/team", label: "OUR TEAM" },
 ];
 
 const Navbar: React.FC = () => {
