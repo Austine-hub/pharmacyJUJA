@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./Hero.module.css";
 import { Link } from "react-router-dom";
 
-import Banner1 from "./../assets/hero/Banner1.jpg";
+import Banner1 from "./../assets/hero/banner1.jpg";
 import Banner2 from "./../assets/hero/banner2.jpg";
 import Banner3 from "./../assets/hero/banner3.jpg";
 import Banner4 from "./../assets/hero/banner4.jpg";
