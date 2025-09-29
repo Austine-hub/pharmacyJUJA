@@ -8,11 +8,14 @@ const Topbar: React.FC = () => {
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
     const lastScrollY = parseInt(
-      document.documentElement.style.getPropertyValue('--last-scroll-y') || '0'
+      document.documentElement.style.getPropertyValue("--last-scroll-y") || "0"
     );
-    
+
     setIsHidden(currentScrollY > lastScrollY && currentScrollY > 50);
-    document.documentElement.style.setProperty('--last-scroll-y', currentScrollY.toString());
+    document.documentElement.style.setProperty(
+      "--last-scroll-y",
+      currentScrollY.toString()
+    );
   }, []);
 
   useEffect(() => {
@@ -29,26 +32,26 @@ const Topbar: React.FC = () => {
     };
 
     window.addEventListener("scroll", requestScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener("scroll", requestScroll);
-    };
+    return () => window.removeEventListener("scroll", requestScroll);
   }, [handleScroll]);
 
-  const handlePhoneCall = useCallback(() => {
+  const handlePhoneCall = () => {
     window.location.href = "tel:+254796787207";
-  }, []);
+  };
 
-  const handleWhatsAppOrder = useCallback(() => {
+  const handleWhatsAppOrder = () => {
     window.open(
       "https://wa.me/254796787207?text=Hello! I would like to order medicine.",
       "_blank",
       "noopener,noreferrer"
     );
-  }, []);
+  };
 
   return (
-    <nav className={`${styles.navbar} ${isHidden ? styles.hidden : ""}`} role="navigation">
+    <nav
+      className={`${styles.navbar} ${isHidden ? styles.hidden : ""}`}
+      role="navigation"
+    >
       {/* Left: Tagline */}
       <div className={styles.leftSection}>
         <span className={styles.tagline}>
@@ -61,8 +64,8 @@ const Topbar: React.FC = () => {
       <div className={styles.rightSection}>
         {/* Contact Icons */}
         <div className={styles.contactIcons}>
-          <a 
-            href="tel:+254700000000" 
+          <a
+            href="tel:+254700000000"
             className={styles.contactLink}
             aria-label="Call pharmacy"
             title="Call Pharmacy"
@@ -74,7 +77,7 @@ const Topbar: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.contactLink}
-            aria-label="Contact via WhatsApp"
+            aria-label="WhatsApp pharmacy"
             title="WhatsApp"
           >
             <MessageCircle aria-hidden="true" />
@@ -83,21 +86,19 @@ const Topbar: React.FC = () => {
 
         {/* Action Buttons */}
         <div className={styles.actionButtons}>
-          <button 
+          <button
             className={styles.callButton}
             onClick={handlePhoneCall}
             aria-label="Call pharmacy now"
           >
-            <Phone size={16} aria-hidden="true" /> 
-            Call Pharmacy
+            <Phone size={16} aria-hidden="true" /> Call Pharmacy
           </button>
-          <button 
+          <button
             className={styles.whatsappButton}
             onClick={handleWhatsAppOrder}
             aria-label="Order medicine via WhatsApp"
           >
-            <MessageCircle size={16} aria-hidden="true" /> 
-            Order Medicine
+            <MessageCircle size={16} aria-hidden="true" /> Order Medicine
           </button>
         </div>
       </div>
@@ -106,3 +107,4 @@ const Topbar: React.FC = () => {
 };
 
 export default Topbar;
+

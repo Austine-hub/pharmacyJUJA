@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
@@ -17,10 +17,33 @@ const navItems: NavItem[] = [
 ];
 
 const Navbar: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <nav className={styles.navbar} role="navigation">
       <div className={styles.container}>
-        <ul className={styles.navList}>
+        {/* Logo / Brand placeholder */}
+        <div className={styles.brand}>MyPharma</div>
+
+        {/* Hamburger button */}
+        <button
+          className={`${styles.hamburger} ${menuOpen ? styles.active : ""}`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        {/* Nav links */}
+        <ul
+          className={`${styles.navList} ${menuOpen ? styles.showMenu : ""}`}
+        >
           {navItems.map(({ to, label }) => (
             <li key={to} className={styles.navItem}>
               <NavLink
@@ -28,7 +51,7 @@ const Navbar: React.FC = () => {
                 className={({ isActive }) =>
                   `${styles.navLink} ${isActive ? styles.active : ""}`
                 }
-                // ✅ No need to manually manage aria-current (React Router does it)
+                onClick={closeMenu}
                 end
               >
                 {label}
