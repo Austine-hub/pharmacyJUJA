@@ -207,6 +207,13 @@
   transform: translateY(0);
 }
 
+
+.primaryBtn,
+.secondaryBtn {
+  text-decoration: none; /* removes underline */
+  display: inline-block; /* ensures proper button-like behavior */
+}
+
 .arrowIcon {
   width: 20px;
   height: 20px;
@@ -250,4 +257,6 @@
     width: 100%;
     justify-content: center;
   }
+  
 }
+

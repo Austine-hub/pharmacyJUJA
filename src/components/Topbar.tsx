@@ -36,12 +36,12 @@ const Topbar: React.FC = () => {
   }, [handleScroll]);
 
   const handlePhoneCall = useCallback(() => {
-    window.location.href = "tel:+254700000000";
+    window.location.href = "tel:+254796787207";
   }, []);
 
   const handleWhatsAppOrder = useCallback(() => {
     window.open(
-      "https://wa.me/254700000000?text=Hello! I would like to order medicine.",
+      "https://wa.me/254796787207?text=Hello! I would like to order medicine.",
       "_blank",
       "noopener,noreferrer"
     );

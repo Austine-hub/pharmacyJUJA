@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 import styles from './OurPharmacy.module.css';
+import { Link } from "react-router-dom";
+
 
 // Import your images
 import contraceptivesImg from './../assets/medicine/contraceptives.png';
@@ -125,8 +127,10 @@ const OurPharmacy = () => {
         </div>
 
         <button className={styles.callButton}>
-          Call us now
-          <svg className={styles.arrowIcon} viewBox="0 0 20 20" fill="none">
+            <Link to="/contact-us" className={styles.primaryBtn}>
+                    Call us now
+            </Link>
+            <svg className={styles.arrowIcon} viewBox="0 0 20 20" fill="none">
             <path d="M5 10h10M10 5l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </button>

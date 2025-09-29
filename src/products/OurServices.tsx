@@ -19,13 +19,13 @@ interface Service {
 const services: Service[] = [
   {
     id: "consultation",
-    image: Service2,
+    image: Service1,
     title: "Consultation",
     description: "Professional guidance to help manage your health effectively.",
   },
   {
     id: "prescription",
-    image: Service1,
+    image: Service2,
     title: "Prescription Medication",
     description: "Dispensing prescriptions and over-the-counter medication.",
   },
