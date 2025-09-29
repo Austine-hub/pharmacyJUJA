@@ -1,8 +1,8 @@
-
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import styles from "./HealthConditions.module.css";
 import { healthConditions } from "../data/healthConditions";
 
+// --- Icon Components ---
 const ArrowLeftIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path
@@ -39,35 +39,38 @@ const MiniArrowRightIcon = () => (
   </svg>
 );
 
+// --- Component ---
 const HealthConditionCarousel: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // --- Drag/swipe support ---
+  // Drag/swipe support
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeftStart = useRef(0);
 
-  const checkScroll = () => {
+  const checkScroll = useCallback(() => {
     const el = scrollContainerRef.current;
     if (!el) return;
     setCanScrollLeft(el.scrollLeft > 0);
     setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
-  };
+  }, []);
 
-  const scroll = (direction: "left" | "right") => {
-    if (!scrollContainerRef.current) return;
+  const scroll = useCallback((direction: "left" | "right") => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
     const amount = direction === "left" ? -300 : 300;
-    scrollContainerRef.current.scrollBy({ left: amount, behavior: "smooth" });
-  };
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  }, []);
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    if (!scrollContainerRef.current) return;
+    const el = scrollContainerRef.current;
+    if (!el) return;
     isDragging.current = true;
     startX.current = e.pageX;
-    scrollLeftStart.current = scrollContainerRef.current.scrollLeft;
-    scrollContainerRef.current.setPointerCapture(e.pointerId);
+    scrollLeftStart.current = el.scrollLeft;
+    el.setPointerCapture(e.pointerId);
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
@@ -77,22 +80,25 @@ const HealthConditionCarousel: React.FC = () => {
   };
 
   const handlePointerUp = (e: React.PointerEvent) => {
-    if (!scrollContainerRef.current) return;
+    const el = scrollContainerRef.current;
+    if (!el) return;
     isDragging.current = false;
-    scrollContainerRef.current.releasePointerCapture(e.pointerId);
+    el.releasePointerCapture(e.pointerId);
   };
 
   useEffect(() => {
     const el = scrollContainerRef.current;
     if (!el) return;
+
     checkScroll();
     el.addEventListener("scroll", checkScroll);
     window.addEventListener("resize", checkScroll);
+
     return () => {
       el.removeEventListener("scroll", checkScroll);
       window.removeEventListener("resize", checkScroll);
     };
-  }, []);
+  }, [checkScroll]);
 
   return (
     <div className={styles.container}>
@@ -123,11 +129,16 @@ const HealthConditionCarousel: React.FC = () => {
           {healthConditions.map(({ id, title, image, bgColor }) => (
             <div key={id} className={styles.card} role="listitem">
               <div className={styles.imageContainer}>
-                <img src={image} alt={title} className={styles.cardImage} />
+                <img
+                  src={image}
+                  alt={title}
+                  className={styles.cardImage}
+                  loading="lazy"
+                />
               </div>
               <div
                 className={styles.cardFooter}
-                style={{ ["--bgColor" as any]: bgColor }}
+                style={{ "--bgColor": bgColor } as React.CSSProperties}
               >
                 <span className={styles.cardTitle}>{title}</span>
                 <button className={styles.cardButton} aria-label={`View ${title}`}>
@@ -153,3 +164,4 @@ const HealthConditionCarousel: React.FC = () => {
 };
 
 export default HealthConditionCarousel;
+
