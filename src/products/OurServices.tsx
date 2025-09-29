@@ -1,53 +1,72 @@
-import React from "react";
 import styles from "./OurServices.module.css";
+
+// Import local service images
+import Service1 from "../assets/services/service1.png";
+import Service2 from "../assets/services/service2.png";
+import Service3 from "../assets/services/service3.png";
+import Service4 from "../assets/services/service4.png";
+import Service5 from "../assets/services/service5.png";
+import Service6 from "../assets/services/service6.png";
+import Service7 from "../assets/services/service7.png";
 
 interface Service {
   id: string;
-  icon: React.ReactNode;
+  image: string;
   title: string;
   description: string;
 }
 
-const OurServices: React.FC = () => {
-  const services: Service[] = [
-    {
-      id: "prescription",
-      icon: <span className={styles.icon}>💊</span>,
-      title: "Prescription Medication",
-      description: "Dispensing prescriptions and over-the-counter medication.",
-    },
-    {
-      id: "compounding",
-      icon: <span className={styles.icon}>⚕️</span>,
-      title: "Compounding",
-      description: "Custom medication formulations e.g., skin preparations.",
-    },
-    {
-      id: "delivery",
-      icon: <span className={styles.icon}>🚚</span>,
-      title: "Delivery Services",
-      description: "Conveniently have your medications delivered at your doorstep.",
-    },
-    {
-      id: "bp-check",
-      icon: <span className={styles.icon}>🩺</span>,
-      title: "Blood Pressure Check",
-      description: "Measure blood pressure levels to monitor hypertension.",
-    },
-    {
-      id: "sugar-check",
-      icon: <span className={styles.icon}>💉</span>,
-      title: "Blood Sugar Check",
-      description: "To monitor and manage blood sugar levels effectively.",
-    },
-    {
-      id: "immunizations",
-      icon: <span className={styles.icon}>🧪</span>,
-      title: "Immunizations",
-      description: "We provide vaccines to prevent flu, typhoid, pneumonia & more.",
-    },
-  ];
+const services: Service[] = [
+  {
+    id: "consultation",
+    image: Service2,
+    title: "Consultation",
+    description: "Professional guidance to help manage your health effectively.",
+  },
+  {
+    id: "prescription",
+    image: Service1,
+    title: "Prescription Medication",
+    description: "Dispensing prescriptions and over-the-counter medication.",
+  },
 
+  {
+    id: "delivery",
+    image: Service3,
+    title: "Delivery Services",
+    description:
+      "Conveniently have your medications delivered to your doorstep.",
+  },
+  {
+    id: "bp-check",
+    image: Service4,
+    title: "Blood Pressure Check",
+    description: "Monitor blood pressure to manage and prevent hypertension.",
+  },
+  {
+    id: "sugar-check",
+    image: Service5,
+    title: "Blood Sugar Check",
+    description: "Quick tests to monitor and manage blood sugar effectively.",
+  },
+  {
+    id: "immunizations",
+    image: Service6,
+    title: "Immunizations",
+    description:
+      "Vaccines to protect against flu, typhoid, pneumonia, and more.",
+  },
+
+    {
+    id: "compounding",
+    image: Service7,
+    title: "Compounding",
+    description: "Custom medication formulations tailored to your needs.",
+  },
+  
+];
+
+const OurServices = () => {
   return (
     <section className={styles.servicesSection}>
       <div className={styles.container}>
@@ -57,17 +76,23 @@ const OurServices: React.FC = () => {
         </p>
 
         <div className={styles.servicesGrid}>
-          {services.map((service) => (
-            <div key={service.id} className={styles.serviceCard}>
-              <div className={styles.iconWrapper}>{service.icon}</div>
-              <h3 className={styles.serviceTitle}>{service.title}</h3>
-              <p className={styles.serviceDescription}>{service.description}</p>
+          {services.map(({ id, image, title, description }) => (
+            <div key={id} className={styles.serviceCard}>
+              <div className={styles.imageWrapper}>
+                <img
+                  src={image}
+                  alt={title}
+                  className={styles.serviceImage}
+                  loading="lazy"
+                />
+              </div>
+              <h3 className={styles.serviceTitle}>{title}</h3>
+              <p className={styles.serviceDescription}>{description}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Full-width extra section (refill / contact CTA) */}
       <div className={styles.extraSection}>
         <div className={styles.extraContent}>
           <h3 className={styles.extraHeading}>

@@ -1,7 +1,6 @@
+// src/components/OurProducts.tsx
 import React from "react";
 import styles from "./OurProducts.module.css";
-
-// import product data + interface
 import { mainProducts } from "../data/MainProducts";
 
 const OurProducts: React.FC = () => {
@@ -14,7 +13,7 @@ const OurProducts: React.FC = () => {
             {/* Top Section - Image */}
             <div className={styles.imageWrapper}>
               <img
-                src={product.image || "/placeholder.png"}
+                src={product.image}
                 alt={product.name}
                 className={styles.image}
               />

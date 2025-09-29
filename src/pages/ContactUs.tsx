@@ -17,7 +17,7 @@ const INITIAL_FORM_STATE: FormData = {
 const CONTACT_INFO = {
   email: "info@yourhospital.com",
   phones: ["+254 123456789", "+254 987654321"],
-  whatsappNumber: "254123456789", // Replace with actual WhatsApp number
+  whatsappNumber: "254796787207", // Replace with actual WhatsApp number
   hours: "9:30 AM – 12:00 PM",
 } as const;
 
@@ -111,7 +111,7 @@ export default function ContactUs() {
           </a>
         </p>
         <p>
-          📞 Tel:{" "}
+          📞 Tel:{" 0796787207"}
           <a
             href={`tel:${CONTACT_INFO.phones[0].replace(/\s/g, "")}`}
             className={styles.link}

@@ -31,29 +31,37 @@
 .serviceCard {
   background: #ffffff;
   border: 1px solid #e6ecef;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 30px 20px;
   transition: all 0.3s ease;
   text-align: center;
 }
 
 .serviceCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
 }
 
-.iconWrapper {
-  font-size: 2.2rem;
+.imageWrapper {
   margin-bottom: 15px;
-  color: #007b9e;
 }
 
-.icon {
-  display: inline-block;
+.serviceImage {
+  width: 45%;       /* take up ~45% of the card width */
+  max-width: 180px; /* prevents it from getting too huge on large screens */
+  height: auto;     /* keep aspect ratio */
+  margin: 0 auto;   /* center horizontally */
+  display: block;   /* ensures margin works */
+  transition: transform 0.3s ease;
 }
+
+.serviceCard:hover .serviceImage {
+  transform: scale(1.05); /* subtle zoom effect on hover */
+}
+
 
 .serviceTitle {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: #004d66;
   margin-bottom: 10px;
@@ -65,7 +73,7 @@
   line-height: 1.5;
 }
 
-/* Full-width extra section */
+/* Extra Section CTA */
 .extraSection {
   margin-top: 60px;
   background: linear-gradient(135deg, #007b9e, #009966);
@@ -106,6 +114,10 @@
     padding: 20px 15px;
   }
 
+  .serviceImage {
+    max-width: 55px;
+  }
+
   .extraHeading {
     font-size: 1.5rem;
   }
@@ -114,3 +126,4 @@
     font-size: 1.2rem;
   }
 }
+
