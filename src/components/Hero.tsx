@@ -2,6 +2,7 @@
 // src/components/Hero.tsx
 import React, { useState, useEffect } from "react";
 import styles from "./Hero.module.css";
+import { Link } from "react-router-dom";
 
 import Banner1 from "./../assets/hero/Banner1.jpg";
 import Banner2 from "./../assets/hero/banner2.jpg";
@@ -60,10 +61,17 @@ const Hero: React.FC = () => {
           From prescriptions to wellness essentials, we make healthcare more
           accessible, reliable, and compassionate for you and your family.
         </p>
+
+
         <div className={styles.ctaGroup}>
-          <button className={styles.primaryBtn}>Shop Medicines</button>
-          <button className={styles.secondaryBtn}>Talk to a Pharmacist</button>
+          <Link to="/products" className={styles.primaryBtn}>
+            Shop Medicines
+          </Link>
+          <Link to="/contact-us" className={styles.secondaryBtn}>
+            Talk to a Pharmacist
+          </Link>
         </div>
+
       </div>
 
       {/* Navigation Arrows */}

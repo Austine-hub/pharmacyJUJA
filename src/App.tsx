@@ -15,6 +15,7 @@ import MainProducts from "./products/OurProducts";
 import ContactUs from "./pages/ContactUs";
 import OurServices from "./products/OurServices";
 import TeamOfExperts from "./pages/TeamOfExperts";
+import OurPharmacy from "./products/OurPharmacy";
 
 
 const App: React.FC = () => {
@@ -33,6 +34,7 @@ const App: React.FC = () => {
               <Hero />
               <HealthConditionCarousel />
               <TopProducts />
+              <OurPharmacy />
             </>
           }
         />

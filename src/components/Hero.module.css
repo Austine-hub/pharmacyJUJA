@@ -88,6 +88,8 @@
   background: #0077cc;
   color: #fff;
   box-shadow: 0 4px 12px rgba(0, 119, 204, 0.3);
+
+
 }
 .primaryBtn:hover {
   background: #005fa3;
@@ -103,6 +105,14 @@
   background: #009e7c;
   transform: translateY(-2px);
 }
+
+
+.primaryBtn,
+.secondaryBtn {
+  text-decoration: none; /* removes underline */
+  display: inline-block; /* ensures proper button-like behavior */
+}
+
 
 /* =========================
    Carousel Arrows
