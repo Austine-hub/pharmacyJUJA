@@ -1,30 +1,20 @@
-
 // src/components/Hero.tsx
 import React, { useState, useEffect } from "react";
 import styles from "./Hero.module.css";
 import { Link } from "react-router-dom";
 
-import Banner1 from "./../assets/hero/banner1.jpg";
-import Banner2 from "./../assets/hero/banner2.jpg";
-import Banner3 from "./../assets/hero/banner3.jpg";
-import Banner4 from "./../assets/hero/banner4.jpg";
-import Banner5 from "./../assets/hero/banner5.jpg";
-import Banner6 from "./../assets/hero/banner6.png";
-import Banner7 from "./../assets/hero/banner7.png";
-import Banner8 from "./../assets/hero/banner8.jpg";
-import Banner9 from "./../assets/hero/banner9.jpg";
+// Dynamically import all images from /assets/hero
+const imageModules = import.meta.glob("../assets/hero/*.{jpg,png,jpeg}", {
+  eager: true,
+  import: "default",
+});
 
-const images: string[] = [
-  Banner1,
-  Banner2,
-  Banner3,
-  Banner4,
-  Banner5,
-  Banner6,
-  Banner7,
-  Banner8,
-  Banner9,
-];
+const images: { src: string; alt: string }[] = Object.values(imageModules).map(
+  (src, index) => ({
+    src: src as string,
+    alt: `Pharmacy banner ${index + 1}`, // You can customize alt text later
+  })
+);
 
 const Hero: React.FC = () => {
   const [current, setCurrent] = useState(0);
@@ -34,7 +24,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % length);
-    }, 2000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [length]);
 
@@ -43,15 +33,21 @@ const Hero: React.FC = () => {
 
   return (
     <section className={styles.hero}>
-      {/* Background Slides */}
-      {images.map((src, index) => (
+      {/* Slides */}
+      {images.map((img, index) => (
         <div
           key={index}
           className={`${styles.slide} ${
             index === current ? styles.active : ""
           }`}
-          style={{ backgroundImage: `url(${src})` }}
-        />
+        >
+          <img
+            src={img.src}
+            alt={img.alt}
+            className={styles.slideImage}
+            loading="lazy"
+          />
+        </div>
       ))}
 
       {/* Overlay Content */}
@@ -62,7 +58,6 @@ const Hero: React.FC = () => {
           accessible, reliable, and compassionate for you and your family.
         </p>
 
-
         <div className={styles.ctaGroup}>
           <Link to="/products" className={styles.primaryBtn}>
             Shop Medicines
@@ -71,14 +66,21 @@ const Hero: React.FC = () => {
             Talk to a Pharmacist
           </Link>
         </div>
-
       </div>
 
       {/* Navigation Arrows */}
-      <button className={`${styles.arrow} ${styles.left}`} onClick={prevSlide}>
+      <button
+        className={`${styles.arrow} ${styles.left}`}
+        onClick={prevSlide}
+        aria-label="Previous Slide"
+      >
         &#10094;
       </button>
-      <button className={`${styles.arrow} ${styles.right}`} onClick={nextSlide}>
+      <button
+        className={`${styles.arrow} ${styles.right}`}
+        onClick={nextSlide}
+        aria-label="Next Slide"
+      >
         &#10095;
       </button>
     </section>
