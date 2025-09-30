@@ -32,10 +32,10 @@ const App: React.FC = () => {
             element={
               <>
                 <Hero />
+                <OurPharmacy />
                 <HealthConditionCarousel />
                 <TopProducts />
-                <OurPharmacy />
-              </>
+                </>
             }
           />
           <Route path="/products" element={<OurProducts />} />

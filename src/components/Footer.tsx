@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaTwitter } from 'react-icons/fa'; // Twitter bird icon
+// import { FaXTwitter } from 'react-icons/fa6'; // Uncomment if you want the new "X" logo
 import styles from './Footer.module.css';
 
 const Footer: React.FC = () => {
@@ -23,8 +25,15 @@ const Footer: React.FC = () => {
             <li><a href="#" className={styles.link}>Sitemap</a></li>
             <li><a href="#" className={styles.link}>Trusted Medical Information</a></li>
             <li>
-              <a href="#" className={styles.twitterLink}>
-                <span className={styles.twitterIcon}>🐦</span> Twitter
+              <a
+                href="https://twitter.com/yourhandle"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.twitterLink}
+                aria-label="Follow us on Twitter"
+              >
+                <FaTwitter className={styles.twitterIcon} />
+                <span>Twitter</span>
               </a>
             </li>
           </ul>
@@ -34,7 +43,7 @@ const Footer: React.FC = () => {
           <h3 className={styles.columnTitle}>INFORMATION</h3>
           <div className={styles.infoContent}>
             <p className={styles.infoText}>
-              AJANJAPharmacy.com offers prescription drugs and over the counter medications but does not offer controlled prescription drugs. We are certified by the Canadian International Pharmacy Association.
+              AJANJAPharmacy.com offers prescription drugs and over the counter medications but does not offer controlled prescription drugs. We are certified by the Kenya Pharmacists and Poisons Board.
             </p>
             
             <div className={styles.logoContainer}>

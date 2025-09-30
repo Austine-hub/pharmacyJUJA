@@ -65,9 +65,9 @@ const TopProducts: React.FC = () => {
           <div
             key={index}
             className={styles.categoryCard}
-            style={{ ["--bg-image" as any]: `url(${category.image})` }}
+            style={{ backgroundImage: `url(${category.image})` }}
           >
-            <div className={styles.cardContent}>
+            <div className={styles.overlay}>
               <h2 className={styles.categoryTitle}>{category.title}</h2>
               <ul className={styles.productList}>
                 {category.products.map((product, productIndex) => (
@@ -87,5 +87,3 @@ const TopProducts: React.FC = () => {
 };
 
 export default TopProducts;
-
-
