@@ -20,7 +20,6 @@ const Topbar: React.FC = () => {
 
   useEffect(() => {
     let ticking = false;
-
     const requestScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
@@ -60,51 +59,27 @@ const Topbar: React.FC = () => {
         </span>
       </div>
 
-      {/* Right: Contact & Actions */}
+      {/* Right: Actions (Compact on Mobile) */}
       <div className={styles.rightSection}>
-        {/* Contact Icons */}
-        <div className={styles.contactIcons}>
-          <a
-            href="tel:+254700000000"
-            className={styles.contactLink}
-            aria-label="Call pharmacy"
-            title="Call Pharmacy"
-          >
-            <Phone aria-hidden="true" />
-          </a>
-          <a
-            href="https://wa.me/254700000000"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.contactLink}
-            aria-label="WhatsApp pharmacy"
-            title="WhatsApp"
-          >
-            <MessageCircle aria-hidden="true" />
-          </a>
-        </div>
-
-        {/* Action Buttons */}
-        <div className={styles.actionButtons}>
-          <button
-            className={styles.callButton}
-            onClick={handlePhoneCall}
-            aria-label="Call pharmacy now"
-          >
-            <Phone size={16} aria-hidden="true" /> Call Pharmacy
-          </button>
-          <button
-            className={styles.whatsappButton}
-            onClick={handleWhatsAppOrder}
-            aria-label="Order medicine via WhatsApp"
-          >
-            <MessageCircle size={16} aria-hidden="true" /> Order Medicine
-          </button>
-        </div>
+        <button
+          className={styles.iconButton}
+          onClick={handlePhoneCall}
+          aria-label="Call pharmacy now"
+        >
+          <Phone aria-hidden="true" />
+          <span className={styles.btnText}>Call</span>
+        </button>
+        <button
+          className={styles.iconButton}
+          onClick={handleWhatsAppOrder}
+          aria-label="Order medicine via WhatsApp"
+        >
+          <MessageCircle aria-hidden="true" />
+          <span className={styles.btnText}>WhatsApp</span>
+        </button>
       </div>
     </nav>
   );
 };
 
 export default Topbar;
-
