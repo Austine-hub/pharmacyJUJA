@@ -94,3 +94,8 @@ button:active {
   }
 }
 
+
+body {
+  overflow-x: hidden; /* horizontal dancing fix */
+  overflow-y: auto;   /* still allows scrolling */
+}

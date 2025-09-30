@@ -8,6 +8,15 @@
   z-index: 1000;
 }
 
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* stays above content */
+  background: #ffffff; /* or your pharmacy brand color */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* subtle shadow for separation */
+}
+
 /* === Layout Wrapper === */
 .container {
   max-width: 1200px;
